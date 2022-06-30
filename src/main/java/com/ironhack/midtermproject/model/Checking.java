@@ -7,13 +7,14 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Currency;
 import java.util.Date;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "id")
 public class Checking extends Account{
-@NotBlank
+   @NotBlank
    private String secretKey;
     @Embedded
     @AttributeOverrides({
@@ -29,7 +30,7 @@ public class Checking extends Account{
    private Money monthlyMaintenanceFee;
 
     @NotNull
-   private Date creationDate;
+   private LocalDate creationDate;
 
     @Enumerated(EnumType.STRING)
    private Status status;
@@ -41,7 +42,7 @@ public class Checking extends Account{
 
     public Checking(Long id, Money balance, AccountHolder primaryOwner, AccountHolder secondaryOwner,
                      String secretKey, Money minimumBalance,
-                    Money monthlyMaintenanceFee, Date creationDate, Status status) {
+                    Money monthlyMaintenanceFee, LocalDate creationDate, Status status) {
         super(id, balance, primaryOwner, secondaryOwner);
         this.secretKey = secretKey;
         this.minimumBalance = minimumBalance;
@@ -50,8 +51,7 @@ public class Checking extends Account{
         this.status = status;
     }
 
-    public Checking(Money balance, AccountHolder primaryOwner, AccountHolder secondaryOwner) {
-    }
+
 
 
     public String getSecretKey() {
@@ -78,11 +78,11 @@ public class Checking extends Account{
 
     }
 
-    public Date getCreationDate() {
+    public LocalDate getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
+    public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
     }
 

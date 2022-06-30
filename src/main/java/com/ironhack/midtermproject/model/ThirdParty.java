@@ -9,24 +9,24 @@ import javax.persistence.Id;
 public class ThirdParty {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String name;
     private String hashedKey;
 
     public ThirdParty() {
     }
 
-    public ThirdParty(long id, String name, String hashedKey) {
+    public ThirdParty(Long id, String name, String hashedKey) {
         this.id = id;
         this.name = name;
         this.hashedKey = hashedKey;
     }
 
-    public long id() {
+    public Long id() {
         return id;
     }
 
-    public void id(long id) {
+    public void id(Long id) {
         this.id = id;
     }
 

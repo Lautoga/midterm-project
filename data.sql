@@ -40,11 +40,11 @@ CREATE TABLE account_holder(
 CREATE TABLE account(
 id BIGINT NOT NULL AUTO_INCREMENT,
 balance_amount  DECIMAL,
-balance_currency  VARCHAR(255) DEFAULT 'USD',
+balance_currency  VARCHAR(255),
 primary_owner_id BIGINT,
 secondary_owner_id BIGINT,
-penalty_fee_amount DECIMAL DEFAULT 0,
-penalty_fee_currency VARCHAR(255) DEFAULT 'USD',
+penalty_fee_amount DECIMAL ,
+penalty_fee_currency VARCHAR(255),
 PRIMARY KEY(id),
 FOREIGN KEY(primary_owner_id) REFERENCES account_holder(id),
 FOREIGN KEY(secondary_owner_id) REFERENCES account_holder(id)
@@ -54,10 +54,10 @@ FOREIGN KEY(secondary_owner_id) REFERENCES account_holder(id)
 CREATE TABLE Checking (
 	id BIGINT NOT NULL AUTO_INCREMENT, 
     secret_key VARCHAR(255),    
-    minimum_balance_amount DECIMAL DEFAULT 250,
-    minimum_balance_currency  VARCHAR(255) DEFAULT 'USD',
-    monthly_maintenance_fee_amount DECIMAL DEFAULT 120,
-    monthly_maintenance_fee_currency  VARCHAR(255) DEFAULT 'USD',
+    minimum_balance_amount DECIMAL,
+    minimum_balance_currency  VARCHAR(255) ,
+    monthly_maintenance_fee_amount DECIMAL ,
+    monthly_maintenance_fee_currency  VARCHAR(255) ,
     creation_date DATE,
     status VARCHAR(6),
   	PRIMARY KEY (id),
@@ -67,10 +67,10 @@ CREATE TABLE Checking (
    
  CREATE TABLE Credit_card (
 	id BIGINT AUTO_INCREMENT NOT NULL,
-    monthly_maintenance_fee_amount DECIMAL DEFAULT 120,
-    monthly_maintenance_fee_currency  VARCHAR(255) DEFAULT 'USD',
-    credit_limit_amount DECIMAL  DEFAULT 0,
-    credit_limit_currency VARCHAR(255) DEFAULT 'USD',
+    monthly_maintenance_fee_amount DECIMAL ,
+    monthly_maintenance_fee_currency  VARCHAR(255),
+    credit_limit_amount DECIMAL ,
+    credit_limit_currency VARCHAR(255) ,
     interest_rate DECIMAL,
   	PRIMARY KEY (id),
 	FOREIGN KEY (id) REFERENCES account (id)
@@ -81,8 +81,8 @@ CREATE TABLE Checking (
 CREATE TABLE Savings (
 	id BIGINT AUTO_INCREMENT NOT NULL,
     secret_key VARCHAR(255),
-    minimum_balance_amount DECIMAL DEFAULT 250,
-    minimum_balance_currency  VARCHAR(255) DEFAULT 'USD',
+    minimum_balance_amount DECIMAL ,
+    minimum_balance_currency  VARCHAR(255) ,
     interest_rate DECIMAL,
     creation_date DATE,
     status VARCHAR(6),

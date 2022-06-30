@@ -1,6 +1,7 @@
 package com.ironhack.midtermproject.model;
 
 import com.ironhack.midtermproject.classes.Money;
+import com.ironhack.midtermproject.enums.Status;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -34,7 +35,7 @@ public abstract class Account {
          @AttributeOverride(name = "currency", column = @Column(name = "penalty_fee_currency")),
          @AttributeOverride(name = "amount", column = @Column(name = "penalty_fee_amount"))
  })
-
+ private final Money penaltyFee = new Money(new BigDecimal(40));
 
  public long getId() {
   return id;
@@ -45,6 +46,11 @@ public abstract class Account {
  }
 
  public Account() {
+ }
+
+ public Account(Long id, Money balance) {
+  this.id = id;
+  this.balance = balance;
  }
 
  public Account(Long id, Money balance, AccountHolder primaryOwner) {
@@ -85,6 +91,7 @@ public abstract class Account {
  public void setSecondaryOwner(AccountHolder secondaryOwner) {
   this.secondaryOwner = secondaryOwner;
  }
+
 
 
 

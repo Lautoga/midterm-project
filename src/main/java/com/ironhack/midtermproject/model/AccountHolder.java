@@ -6,6 +6,7 @@ import com.ironhack.midtermproject.classes.Address;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 @Entity
@@ -28,7 +29,7 @@ public class AccountHolder extends User {
             @AttributeOverride(name = "city", column = @Column(name = "mailing_address_city")),
             @AttributeOverride(name = "postalCode", column = @Column(name = "mailing_address_postal_code"))
     })
-    private String mailingAddress;
+    private Address mailingAddress;
 
     @OneToMany(mappedBy = "primaryOwner", cascade = CascadeType.ALL)
     private List<Account> accountsPrimaryOwner;
@@ -39,17 +40,21 @@ public class AccountHolder extends User {
     public AccountHolder() {
     }
 
-    public AccountHolder(String name, String password, LocalDate dateOfBirth, Address primaryAddress,
-                         String mailingAddress, List<Account> accountsPrimaryOwner,
-                         List<Account> accountsSecondaryOwner) {
+    public AccountHolder(String name, String password, LocalDate dateOfBirth,
+                         Address primaryAddress, Address mailingAddress) {
         super(name, password);
         this.dateOfBirth = dateOfBirth;
         this.primaryAddress = primaryAddress;
         this.mailingAddress = mailingAddress;
-        this.accountsPrimaryOwner = accountsPrimaryOwner;
-        this.accountsSecondaryOwner = accountsSecondaryOwner;
+
     }
 
+
+    public AccountHolder(String name, String password,LocalDate dateOfBirth, Address primaryAddress) {
+        super(name, password);
+        this.dateOfBirth = dateOfBirth;
+        this.primaryAddress = primaryAddress;
+    }
 
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
@@ -67,11 +72,11 @@ public class AccountHolder extends User {
         this.primaryAddress = primaryAddress;
     }
 
-    public String getMailingAddress() {
+    public Address getMailingAddress() {
         return mailingAddress;
     }
 
-    public void setMailingAddress(String mailingAddress) {
+    public void setMailingAddress(Address mailingAddress) {
         this.mailingAddress = mailingAddress;
     }
 
@@ -89,5 +94,14 @@ public class AccountHolder extends User {
 
     public void setAccountsSecondaryOwner(List<Account> accountsSecondaryOwner) {
         this.accountsSecondaryOwner = accountsSecondaryOwner;
+    }
+
+    public int age() {
+        LocalDate currentDate = LocalDate.now();
+        if (dateOfBirth != null) {
+            return Period.between(dateOfBirth, currentDate).getYears();
+        } else {
+            return 0;
+        }
     }
 }

@@ -5,7 +5,7 @@ import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class User {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -35,7 +35,7 @@ public abstract class User {
         return name;
     }
 
-    public void setUsername(String username) {
+    public void setName(String name) {
         this.name = name;
     }
 

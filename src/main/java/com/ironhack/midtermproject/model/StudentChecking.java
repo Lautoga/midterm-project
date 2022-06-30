@@ -6,6 +6,7 @@ import com.ironhack.midtermproject.enums.Status;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.util.Date;
 @Entity
 @PrimaryKeyJoinColumn(name = "id")
@@ -13,14 +14,15 @@ public class StudentChecking extends Account{
 @NotBlank
     private String secretKey;
 @NotNull
-    private Date creationDate;
+    private LocalDate creationDate;
+@Enumerated(EnumType.STRING)
     private Status status;
 
     public StudentChecking() {
     }
 
     public StudentChecking(Long id,Money balance, AccountHolder primaryOwner, AccountHolder secondaryOwner,
-                            String secretKey, Date creationDate,
+                            String secretKey, LocalDate creationDate,
                            Status status) {
         super(id, balance, primaryOwner, secondaryOwner);
         this.secretKey = secretKey;
@@ -43,11 +45,11 @@ public class StudentChecking extends Account{
         this.secretKey = secretKey;
     }
 
-    public Date getCreationDate() {
+    public LocalDate getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
+    public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
     }
 
