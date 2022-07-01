@@ -65,4 +65,21 @@ class CreditCardControllerImplTest {
                 .andReturn();
         assertTrue(mvcResult.getResponse().getContentAsString().contains("Maria"));
         assertTrue(mvcResult.getResponse().getContentAsString().contains("Ana"));    }
+
+
+    @Test
+    void findById() {
     }
+
+    @Test
+    void store() {
+    }
+
+    @Test
+    void updateBalance() {
+    }
+
+    @Test
+    void delete() {
+    }
+}

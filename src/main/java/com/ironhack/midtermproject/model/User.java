@@ -9,7 +9,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String username;
     private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -18,8 +18,8 @@ public class User {
     public User() {
     }
 
-    public User(String name, String password) {
-        this.name = name;
+    public User(String username, String password) {
+        this.username = username;
         this.password = password;
     }
 
@@ -31,12 +31,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUserame() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserame(String name) {
+        this.username = name;
     }
 
     public String getPassword() {

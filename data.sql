@@ -1,7 +1,10 @@
-DROP SCHEMA IF EXISTS midterm;
-CREATE SCHEMA midterm;
-USE midterm;
+-- DROP SCHEMA IF EXISTS midterm;
+-- CREATE SCHEMA midterm;
+-- USE midterm;
 
+DROP SCHEMA IF EXISTS midterm_test;
+CREATE SCHEMA midterm_test;
+USE midterm_test;
 CREATE TABLE user(
 id BIGINT NOT NULL AUTO_INCREMENT,
 name VARCHAR(255),

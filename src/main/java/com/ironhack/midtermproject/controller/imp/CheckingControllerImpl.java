@@ -1,9 +1,9 @@
 package com.ironhack.midtermproject.controller.imp;
 
 import com.ironhack.midtermproject.Service.Interfaces.CheckingService;
+import com.ironhack.midtermproject.controller.DTO.BalanceDTO;
 import com.ironhack.midtermproject.controller.interfaces.CheckingController;
 import com.ironhack.midtermproject.model.Account;
-import com.ironhack.midtermproject.model.AccountHolder;
 import com.ironhack.midtermproject.model.Checking;
 import com.ironhack.midtermproject.repository.CheckingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,8 +46,15 @@ public class CheckingControllerImpl implements CheckingController {
     @PutMapping("/checking/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable Long id,@RequestBody @Valid Checking checking) {
-    checkingService.renovate(id,checking);
+    checkingService.update(id,checking);
     }
+
+    @PatchMapping("/checking/{id}/balance")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateBalance(@PathVariable Long id,@RequestBody @Valid BalanceDTO checkingBalanceDTO) {
+    checkingService.updateBalance(id, checkingBalanceDTO.getBalance());
+    }
+
     @DeleteMapping("/checking/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {

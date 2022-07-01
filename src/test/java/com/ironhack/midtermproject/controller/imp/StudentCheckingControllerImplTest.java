@@ -1,4 +1,4 @@
-package com.ironhack.midtermproject.model;
+package com.ironhack.midtermproject.controller.imp;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SavingsTest {
+class StudentCheckingControllerImplTest {
 
     @BeforeEach
     void setUp() {
@@ -17,12 +17,10 @@ class SavingsTest {
     }
 
     @Test
-    void setMinimumBalance() {
+    void findAll() {
     }
 
-
     @Test
-    void setInterestRate() {
-
+    void findById() {
     }
 }

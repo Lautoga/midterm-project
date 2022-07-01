@@ -1,8 +1,11 @@
 package com.ironhack.midtermproject.controller.imp;
 
 import com.ironhack.midtermproject.controller.interfaces.AccountHolderController;
+import com.ironhack.midtermproject.controller.interfaces.AdminController;
 import com.ironhack.midtermproject.model.AccountHolder;
+import com.ironhack.midtermproject.model.Admin;
 import com.ironhack.midtermproject.repository.AccountHolderRepository;
+import com.ironhack.midtermproject.repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,24 +15,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;
-
 @RestController
-public class AccountHolderControllerImpl implements AccountHolderController {
+public class AdminControllerImpl implements AdminController {
+
     @Autowired
-    private AccountHolderRepository accountHolderRepository;
+    private AdminRepository adminRepository;
 
-
-    @GetMapping("/account-holder")
+    @GetMapping("/admin")
     @ResponseStatus(HttpStatus.OK)
-        public List<AccountHolder> findAll() {
-            return accountHolderRepository.findAll();
-        }
+    public List<Admin> findAll() {
+        return adminRepository.findAll();
+    }
 
-
-    @GetMapping("/account-holder/{id}")
+    @GetMapping("/admin/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public AccountHolder findById(@PathVariable(name = "id") Long id) {
-        Optional<AccountHolder> optionalAccountHolder = accountHolderRepository.findById(id);
-        return optionalAccountHolder.get();
+    public Admin findById(@PathVariable(name="id") Long id) {
+        Optional<Admin> optionalAdmin = adminRepository.findById(id);
+        return optionalAdmin.get();
     }
 }
+
+

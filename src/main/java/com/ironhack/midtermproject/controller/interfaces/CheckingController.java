@@ -1,6 +1,7 @@
 package com.ironhack.midtermproject.controller.interfaces;
 
 
+import com.ironhack.midtermproject.controller.DTO.BalanceDTO;
 import com.ironhack.midtermproject.model.Account;
 import com.ironhack.midtermproject.model.Checking;
 
@@ -11,7 +12,8 @@ public interface CheckingController {
 
     Checking findById(Long id);
     Account store(Checking checking);
-    void update(Long id, Checking checking);
+
+    void updateBalance(Long id, BalanceDTO checkingBalanceDTO);
 
     void delete(Long id);
 

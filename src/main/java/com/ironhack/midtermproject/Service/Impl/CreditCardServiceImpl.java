@@ -1,32 +1,25 @@
 package com.ironhack.midtermproject.Service.Impl;
 
-import com.ironhack.midtermproject.Service.Interfaces.CheckingService;
+import com.ironhack.midtermproject.Service.Interfaces.CreditCardService;
 import com.ironhack.midtermproject.classes.Money;
-import com.ironhack.midtermproject.model.Checking;
+import com.ironhack.midtermproject.model.CreditCard;
 import com.ironhack.midtermproject.repository.CheckingRepository;
+import com.ironhack.midtermproject.repository.CreditCardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CheckingServiceImpl implements CheckingService {
+public class CreditCardServiceImpl implements CreditCardService {
 
     @Autowired
-    private CheckingRepository checkingRepository;
+   private CreditCardRepository creditCardRepository;
 
-
-    public Checking save(Checking checking) {
-
-        return checking;
+    public CreditCard save(CreditCard creditCard) {
+        return null;
     }
 
 
-    public void update(Long id, Checking checking) {
-
-    }
-
-
-
-
+    @Override
     public void delete(Long id) {
 
     }
