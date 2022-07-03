@@ -35,7 +35,6 @@ public abstract class Account {
          @AttributeOverride(name = "currency", column = @Column(name = "penalty_fee_currency")),
          @AttributeOverride(name = "amount", column = @Column(name = "penalty_fee_amount"))
  })
- private final Money penaltyFee = new Money(new BigDecimal(40));
 
  public long getId() {
   return id;

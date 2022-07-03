@@ -12,7 +12,6 @@ public interface SavingsController {
     Savings findById(Long id);
     Account store(Savings savings);
 
-    void updateBalance(Long id, BalanceDTO savingsBalanceDTO);
 
     void delete(Long id);
 }

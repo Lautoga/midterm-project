@@ -23,7 +23,7 @@ public class ThirdPartyControllerImpl implements ThirdPartyController {
     @PostMapping("/third-party")
     @ResponseStatus(HttpStatus.CREATED)
     public ThirdParty store(@RequestBody @Valid ThirdParty thirdParty) {
-        return thirdPartyService.save(thirdParty);
+        return thirdPartyRepository.save(thirdParty);
     }
 
     @DeleteMapping("/third-party/{id}")

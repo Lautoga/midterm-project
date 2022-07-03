@@ -32,22 +32,15 @@ public class CreditCardControllerImpl implements CreditCardController {
     @GetMapping("/credit-card/{id}")
     @ResponseStatus(HttpStatus.OK)
     public CreditCard findById(@PathVariable(name = "id")Long id) {
-        Optional<CreditCard> optionalCreditCard = creditCardRepository.findById(id);
-        return optionalCreditCard.get();
+        return creditCardService.findById(id);
     }
 
     @PostMapping("/credit-card")
     @ResponseStatus(HttpStatus.CREATED)
     public Account store(@RequestBody @Valid CreditCard creditCard) {
-        return creditCardService.save(creditCard);
+        return creditCardRepository.save(creditCard);
     }
 
-
-    @PatchMapping("/credit-card/{id}/balance")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateBalance(@PathVariable Long id,@RequestBody @Valid BalanceDTO creditCardBalanceDTO) {
-        creditCardService.updateBalance(id, creditCardBalanceDTO.getBalance());
-    }
 
 
     @DeleteMapping("/credit-card/{id}")

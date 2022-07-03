@@ -32,10 +32,10 @@ public class AccountHolder extends User {
     private Address mailingAddress;
 
     @OneToMany(mappedBy = "primaryOwner", cascade = CascadeType.ALL)
-    private List<Account> accountsPrimaryOwner;
+    private List<Account> accountPrimaryOwner;
 
     @OneToMany(mappedBy = "secondaryOwner", cascade = CascadeType.ALL)
-    private List<Account> accountsSecondaryOwner;
+    private List<Account> accountSecondaryOwner;
 
     public AccountHolder() {
     }
@@ -80,20 +80,20 @@ public class AccountHolder extends User {
         this.mailingAddress = mailingAddress;
     }
 
-    public List<Account> getAccountsPrimaryOwner() {
-        return accountsPrimaryOwner;
+    public List<Account> getAccountPrimaryOwner() {
+        return accountPrimaryOwner;
     }
 
     public void setAccountsPrimaryOwner(List<Account> accountsPrimaryOwner) {
-        this.accountsPrimaryOwner = accountsPrimaryOwner;
+        this.accountPrimaryOwner = accountsPrimaryOwner;
     }
 
-    public List<Account> getAccountsSecondaryOwner() {
-        return accountsSecondaryOwner;
+    public List<Account> getAccountSecondaryOwner() {
+        return accountSecondaryOwner;
     }
 
-    public void setAccountsSecondaryOwner(List<Account> accountsSecondaryOwner) {
-        this.accountsSecondaryOwner = accountsSecondaryOwner;
+    public void setAccountSecondaryOwner(List<Account> accountSecondaryOwner) {
+        this.accountSecondaryOwner = accountSecondaryOwner;
     }
 
     public int age() {

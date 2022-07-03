@@ -13,7 +13,5 @@ public interface CreditCardController {
     Account store(CreditCard creditCard);
 
 
-    void updateBalance(Long id, BalanceDTO creditCardBalanceDTO);
-
     void delete(Long id);
 }

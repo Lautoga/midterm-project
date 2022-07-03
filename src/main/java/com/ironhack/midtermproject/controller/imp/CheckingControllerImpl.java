@@ -5,6 +5,7 @@ import com.ironhack.midtermproject.controller.DTO.BalanceDTO;
 import com.ironhack.midtermproject.controller.interfaces.CheckingController;
 import com.ironhack.midtermproject.model.Account;
 import com.ironhack.midtermproject.model.Checking;
+import com.ironhack.midtermproject.model.StudentChecking;
 import com.ironhack.midtermproject.repository.CheckingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,28 +33,17 @@ public class CheckingControllerImpl implements CheckingController {
     @GetMapping("/checking/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Checking findById(@PathVariable (name = "id") Long id) {
-        Optional<Checking> optionalChecking = checkingRepository.findById(id);
-        return optionalChecking.get();
+        return  checkingService.findById(id);
     }
 
     @PostMapping("/checking")
     @ResponseStatus(HttpStatus.CREATED)
-    public Account store(@RequestBody @Valid Checking checking) {
-        return checkingService.save(checking);
+    public Account store(@RequestBody @Valid Checking checking,
+                         @RequestBody @Valid StudentChecking studentChecking) {
+        return checkingService.save(checking, studentChecking);
     }
 
 
-    @PutMapping("/checking/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@PathVariable Long id,@RequestBody @Valid Checking checking) {
-    checkingService.update(id,checking);
-    }
-
-    @PatchMapping("/checking/{id}/balance")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateBalance(@PathVariable Long id,@RequestBody @Valid BalanceDTO checkingBalanceDTO) {
-    checkingService.updateBalance(id, checkingBalanceDTO.getBalance());
-    }
 
     @DeleteMapping("/checking/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

@@ -15,26 +15,28 @@ import java.util.Currency;
 import java.util.Date;
 
 @Entity
-@PrimaryKeyJoinColumn(name = "id")
-public class Savings extends Account{
+    @PrimaryKeyJoinColumn(name = "id")
+    public class Savings extends Account{
 
-@NotBlank
-private String secretKey;
-@Embedded
-@AttributeOverrides({
+    @NotBlank
+    private String secretKey;
+    @Embedded
+    @AttributeOverrides({
         @AttributeOverride(name = "currency", column = @Column(name = "minimum_balance_currency")),
         @AttributeOverride(name = "amount", column = @Column(name = "minimum_balance_amount"))
-})
-private Money minimumBalance;
-@NotNull
+    })
+    private Money minimumBalance;
+
+
+    @NotNull
     @DecimalMin("0.0")
     @DecimalMax("0.5")
-private BigDecimal interestRate;
+    private BigDecimal interestRate;
     @NotNull
-
-private LocalDate creationDate;
+    private LocalDate creationDate;
+    private LocalDate lastInterestDate;
     @Enumerated(EnumType.STRING)
-private Status status;
+    private Status status;
 
 
     public Savings() {
@@ -42,22 +44,25 @@ private Status status;
 
     public Savings(Long id, Money balance, AccountHolder primaryOwner, AccountHolder secondaryOwner,
                     String secretKey, Money minimumBalance, BigDecimal interestRate,
-                   LocalDate creationDate, Status status) {
+                   LocalDate creationDate,LocalDate lastInterestDate, Status status) {
         super(id, balance, primaryOwner, secondaryOwner);
         this.secretKey = secretKey;
         this.minimumBalance = new Money(new BigDecimal(1000));
         this.interestRate =new BigDecimal(0.0025);
         this.creationDate = creationDate;
+        this.lastInterestDate = LocalDate.now();
         this.status = status;
     }
 
     public Savings(Long id, Money balance, AccountHolder primaryOwner, String secretKey,
-                   Money minimumBalance, BigDecimal interestRate, LocalDate creationDate, Status status) {
+                   Money minimumBalance, BigDecimal interestRate, LocalDate creationDate,
+                   LocalDate lastInterestDate, Status status) {
         super(id, balance, primaryOwner);
         this.secretKey = secretKey;
         this.minimumBalance =new Money(new BigDecimal(1000)) ;
         this.interestRate = new BigDecimal(0.0025);
         this.creationDate = creationDate;
+        this.lastInterestDate = LocalDate.now();
         this.status = status;
     }
 
@@ -105,6 +110,14 @@ private Status status;
 
     public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public LocalDate getLastInterestDate() {
+        return lastInterestDate;
+    }
+
+    public void setLastInterestDate(LocalDate lastInterestDate) {
+        this.lastInterestDate = lastInterestDate;
     }
 
     public Status getStatus() {

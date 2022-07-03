@@ -35,23 +35,16 @@ public class SavingsControllerImpl implements SavingsController {
     @GetMapping("/savings/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Savings findById(@PathVariable(name = "id")Long id) {
-        Optional<Savings> optionalSavings = savingsRepository.findById(id);
-        return optionalSavings.get();
+        return  savingsService.findById(id);
     }
 
     @PostMapping("/savings")
     @ResponseStatus(HttpStatus.CREATED)
     public Account store(@RequestBody @Valid Savings savings) {
-        return savingsService.save(savings);
+        return savingsRepository.save(savings);
     }
 
 
-
-    @PatchMapping("/savings/{id}/balance")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateBalance(@PathVariable Long id,@RequestBody @Valid BalanceDTO savingsBalanceDTO) {
-        savingsService.updateBalance(id, savingsBalanceDTO.getBalance());
-    }
 
 
     @DeleteMapping("/savings/{id}")

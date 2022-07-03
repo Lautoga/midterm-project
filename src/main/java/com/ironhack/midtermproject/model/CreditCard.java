@@ -3,7 +3,9 @@ package com.ironhack.midtermproject.model;
 import com.ironhack.midtermproject.classes.Money;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 
 @Entity
@@ -19,23 +21,29 @@ public class CreditCard extends Account{
 
    private BigDecimal interestRate;
 
-
+    @NotNull
+    private LocalDate creationDate;
+    private LocalDate lastInterestDate;
 
 
     public CreditCard() {
     }
 
     public CreditCard(Long id, Money balance, AccountHolder primaryOwner, AccountHolder secondaryOwner,
-                       Money creditLimit, BigDecimal interestRate) {
+                       Money creditLimit,  LocalDate creationDate,LocalDate lastInterestDate,BigDecimal interestRate) {
         super(id, balance, primaryOwner, secondaryOwner);
         this.creditLimit = new Money(new BigDecimal(100));
+        this.creationDate = creationDate;
+        this.lastInterestDate = lastInterestDate;
         this.interestRate = new BigDecimal(0.2);
     }
 
     public CreditCard(Long id, Money balance, AccountHolder primaryOwner,
-                      Money creditLimit, BigDecimal interestRate) {
+                      Money creditLimit, LocalDate creationDate,LocalDate lastInterestDate, BigDecimal interestRate) {
         super(id, balance, primaryOwner);
         this.creditLimit = new Money (new BigDecimal(100));
+        this.creationDate = creationDate;
+        this.lastInterestDate = lastInterestDate;
         this.interestRate = new BigDecimal(0.2);
     }
 
@@ -64,5 +72,21 @@ public class CreditCard extends Account{
         }else{
             this.interestRate = interestRate;
         }
+    }
+
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDate creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public LocalDate getLastInterestDate() {
+        return lastInterestDate;
+    }
+
+    public void setLastInterestDate(LocalDate lastInterestDate) {
+        this.lastInterestDate = lastInterestDate;
     }
 }
