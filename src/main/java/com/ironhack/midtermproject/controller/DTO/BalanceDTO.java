@@ -1,6 +1,6 @@
 package com.ironhack.midtermproject.controller.DTO;
 
-import com.ironhack.midtermproject.classes.Money;
+import com.ironhack.midtermproject.Utils.Money;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;

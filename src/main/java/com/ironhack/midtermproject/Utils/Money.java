@@ -1,4 +1,4 @@
-package com.ironhack.midtermproject.classes;
+package com.ironhack.midtermproject.Utils;
 
 import javax.persistence.Embeddable;
 import java.math.RoundingMode;

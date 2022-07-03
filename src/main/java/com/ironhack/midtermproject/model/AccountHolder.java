@@ -1,10 +1,9 @@
 package com.ironhack.midtermproject.model;
 
 
-import com.ironhack.midtermproject.classes.Address;
+import com.ironhack.midtermproject.Utils.Address;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
@@ -96,12 +95,4 @@ public class AccountHolder extends User {
         this.accountSecondaryOwner = accountSecondaryOwner;
     }
 
-    public int age() {
-        LocalDate currentDate = LocalDate.now();
-        if (dateOfBirth != null) {
-            return Period.between(dateOfBirth, currentDate).getYears();
-        } else {
-            return 0;
-        }
-    }
 }

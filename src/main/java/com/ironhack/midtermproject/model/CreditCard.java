@@ -1,11 +1,12 @@
 package com.ironhack.midtermproject.model;
 
-import com.ironhack.midtermproject.classes.Money;
+import com.ironhack.midtermproject.Utils.Money;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Date;
 
 
 @Entity
@@ -22,7 +23,7 @@ public class CreditCard extends Account{
    private BigDecimal interestRate;
 
     @NotNull
-    private LocalDate creationDate;
+    private Date creationDate;
     private LocalDate lastInterestDate;
 
 
@@ -30,20 +31,20 @@ public class CreditCard extends Account{
     }
 
     public CreditCard(Long id, Money balance, AccountHolder primaryOwner, AccountHolder secondaryOwner,
-                       Money creditLimit,  LocalDate creationDate,LocalDate lastInterestDate,BigDecimal interestRate) {
+                       Money creditLimit,  Date creationDate,LocalDate lastInterestDate,BigDecimal interestRate) {
         super(id, balance, primaryOwner, secondaryOwner);
         this.creditLimit = new Money(new BigDecimal(100));
         this.creationDate = creationDate;
-        this.lastInterestDate = lastInterestDate;
+        this.lastInterestDate = LocalDate.now();
         this.interestRate = new BigDecimal(0.2);
     }
 
     public CreditCard(Long id, Money balance, AccountHolder primaryOwner,
-                      Money creditLimit, LocalDate creationDate,LocalDate lastInterestDate, BigDecimal interestRate) {
+                      Money creditLimit, Date creationDate,LocalDate lastInterestDate, BigDecimal interestRate) {
         super(id, balance, primaryOwner);
         this.creditLimit = new Money (new BigDecimal(100));
         this.creationDate = creationDate;
-        this.lastInterestDate = lastInterestDate;
+        this.lastInterestDate = LocalDate.now();
         this.interestRate = new BigDecimal(0.2);
     }
 
@@ -74,11 +75,11 @@ public class CreditCard extends Account{
         }
     }
 
-    public LocalDate getCreationDate() {
+    public Date getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDate creationDate) {
+    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
 

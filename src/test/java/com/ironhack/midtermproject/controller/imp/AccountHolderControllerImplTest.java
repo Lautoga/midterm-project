@@ -1,7 +1,7 @@
 package com.ironhack.midtermproject.controller.imp;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ironhack.midtermproject.classes.Address;
+import com.ironhack.midtermproject.Utils.Address;
 import com.ironhack.midtermproject.model.AccountHolder;
 import com.ironhack.midtermproject.repository.AccountHolderRepository;
 import org.junit.jupiter.api.AfterEach;
@@ -42,7 +42,7 @@ class AccountHolderControllerImplTest {
                 LocalDate.of(1988,12,9),new Address("asd","Alicante",03003));
         accountHolder2 = new AccountHolder("Ana","5678",
                 LocalDate.of(2000,2,23),new Address("ghj","Valencia",46003));
-   accountHolderRepository.saveAll(List.of(accountHolder1,accountHolder2));
+     accountHolderRepository.saveAll(List.of(accountHolder1,accountHolder2));
     }
 
 

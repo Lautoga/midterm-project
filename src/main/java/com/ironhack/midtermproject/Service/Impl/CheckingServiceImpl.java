@@ -1,7 +1,7 @@
 package com.ironhack.midtermproject.Service.Impl;
 
 import com.ironhack.midtermproject.Service.Interfaces.CheckingService;
-import com.ironhack.midtermproject.classes.Money;
+import com.ironhack.midtermproject.Utils.Money;
 import com.ironhack.midtermproject.model.Checking;
 import com.ironhack.midtermproject.model.StudentChecking;
 import com.ironhack.midtermproject.repository.CheckingRepository;
@@ -13,7 +13,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Optional;
 
 @Service
 public class CheckingServiceImpl implements CheckingService {

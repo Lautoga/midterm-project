@@ -1,6 +1,6 @@
 package com.ironhack.midtermproject.model;
 
-import com.ironhack.midtermproject.classes.Money;
+import com.ironhack.midtermproject.Utils.Money;
 import com.ironhack.midtermproject.enums.Status;
 
 import javax.persistence.*;
@@ -10,8 +10,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Currency;
 import java.util.Date;
 
 @Entity
@@ -33,7 +31,7 @@ import java.util.Date;
     @DecimalMax("0.5")
     private BigDecimal interestRate;
     @NotNull
-    private LocalDate creationDate;
+    private Date creationDate;
     private LocalDate lastInterestDate;
     @Enumerated(EnumType.STRING)
     private Status status;
@@ -44,7 +42,7 @@ import java.util.Date;
 
     public Savings(Long id, Money balance, AccountHolder primaryOwner, AccountHolder secondaryOwner,
                     String secretKey, Money minimumBalance, BigDecimal interestRate,
-                   LocalDate creationDate,LocalDate lastInterestDate, Status status) {
+                   Date creationDate,LocalDate lastInterestDate, Status status) {
         super(id, balance, primaryOwner, secondaryOwner);
         this.secretKey = secretKey;
         this.minimumBalance = new Money(new BigDecimal(1000));
@@ -55,7 +53,7 @@ import java.util.Date;
     }
 
     public Savings(Long id, Money balance, AccountHolder primaryOwner, String secretKey,
-                   Money minimumBalance, BigDecimal interestRate, LocalDate creationDate,
+                   Money minimumBalance, BigDecimal interestRate, Date creationDate,
                    LocalDate lastInterestDate, Status status) {
         super(id, balance, primaryOwner);
         this.secretKey = secretKey;
@@ -104,11 +102,11 @@ import java.util.Date;
         }
     }
 
-    public LocalDate getCreationDate() {
+    public Date getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDate creationDate) {
+    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
 

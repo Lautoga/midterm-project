@@ -1,8 +1,7 @@
 package com.ironhack.midtermproject.Service.Impl;
 
 import com.ironhack.midtermproject.Service.Interfaces.SavingsService;
-import com.ironhack.midtermproject.classes.Money;
-import com.ironhack.midtermproject.model.Checking;
+import com.ironhack.midtermproject.Utils.Money;
 import com.ironhack.midtermproject.model.Savings;
 import com.ironhack.midtermproject.repository.SavingsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
 @Service

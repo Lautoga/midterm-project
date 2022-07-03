@@ -1,15 +1,8 @@
 package com.ironhack.midtermproject.model;
 
-import com.ironhack.midtermproject.classes.Money;
-import com.ironhack.midtermproject.enums.Status;
+import com.ironhack.midtermproject.Utils.Money;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.time.LocalDate;
-import java.time.Period;
-import java.util.Currency;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)

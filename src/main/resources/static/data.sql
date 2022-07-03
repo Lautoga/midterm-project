@@ -1,13 +1,13 @@
--- DROP SCHEMA IF EXISTS midterm;
--- CREATE SCHEMA midterm;
--- USE midterm;
+ -- DROP SCHEMA IF EXISTS midterm;
+ -- CREATE SCHEMA midterm;
+--  USE midterm;
 
-DROP SCHEMA IF EXISTS midterm_test;
-CREATE SCHEMA midterm_test;
-USE midterm_test;
+ DROP SCHEMA IF EXISTS midterm_test;
+ CREATE SCHEMA midterm_test;
+ USE midterm_test;
 CREATE TABLE user(
 id BIGINT NOT NULL AUTO_INCREMENT,
-name VARCHAR(255),
+username VARCHAR(255),
 password VARCHAR(255),
 PRIMARY KEY(id)
 );
@@ -74,6 +74,8 @@ CREATE TABLE Checking (
     monthly_maintenance_fee_currency  VARCHAR(255),
     credit_limit_amount DECIMAL ,
     credit_limit_currency VARCHAR(255) ,
+	creation_date DATE,
+    last_interest_date DATE,
     interest_rate DECIMAL,
   	PRIMARY KEY (id),
 	FOREIGN KEY (id) REFERENCES account (id)
@@ -88,6 +90,7 @@ CREATE TABLE Savings (
     minimum_balance_currency  VARCHAR(255) ,
     interest_rate DECIMAL,
     creation_date DATE,
+    last_interest_date DATE,
     status VARCHAR(6),
   	PRIMARY KEY (id),
 	FOREIGN KEY (id) REFERENCES account (id)

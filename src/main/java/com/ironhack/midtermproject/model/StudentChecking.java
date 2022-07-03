@@ -1,6 +1,6 @@
 package com.ironhack.midtermproject.model;
 
-import com.ironhack.midtermproject.classes.Money;
+import com.ironhack.midtermproject.Utils.Money;
 import com.ironhack.midtermproject.enums.Status;
 
 import javax.persistence.*;
@@ -8,13 +8,14 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Date;
+
 @Entity
 @PrimaryKeyJoinColumn(name = "id")
 public class StudentChecking extends Account{
 @NotBlank
     private String secretKey;
 @NotNull
-    private LocalDate creationDate;
+    private Date creationDate;
 @Enumerated(EnumType.STRING)
     private Status status;
 
@@ -22,17 +23,19 @@ public class StudentChecking extends Account{
     }
 
     public StudentChecking(Long id,Money balance, AccountHolder primaryOwner, AccountHolder secondaryOwner,
-                            String secretKey, LocalDate creationDate,
-                           Status status) {
+                            String secretKey, Date creationDate, Status status) {
         super(id, balance, primaryOwner, secondaryOwner);
         this.secretKey = secretKey;
         this.creationDate = creationDate;
         this.status = status;
     }
 
-    public StudentChecking(Long id, Money balance, AccountHolder primaryOwner, AccountHolder secondaryOwner, String secretKey) {
-        super(id, balance, primaryOwner, secondaryOwner);
+    public StudentChecking(Long id, Money balance, AccountHolder primaryOwner, String secretKey,
+                           Date creationDate, Status status) {
+        super(id, balance, primaryOwner);
         this.secretKey = secretKey;
+        this.creationDate = creationDate;
+        this.status = status;
     }
 
 
@@ -45,11 +48,11 @@ public class StudentChecking extends Account{
         this.secretKey = secretKey;
     }
 
-    public LocalDate getCreationDate() {
+    public Date getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDate creationDate) {
+    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
 

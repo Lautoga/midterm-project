@@ -1,10 +1,7 @@
 package com.ironhack.midtermproject.controller.imp;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ironhack.midtermproject.classes.Address;
-import com.ironhack.midtermproject.model.AccountHolder;
 import com.ironhack.midtermproject.model.Admin;
-import com.ironhack.midtermproject.repository.AccountHolderRepository;
 import com.ironhack.midtermproject.repository.AdminRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,7 +14,6 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
