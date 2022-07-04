@@ -86,12 +86,4 @@ class AccountControllerImplTest {
         assertEquals(new Money(new BigDecimal(1500)),creditCard1.getBalance());
     }
 
-    @Test
-    void transferBalance() {
-
-    }
-
-    @Test
-    void thirdPartyTransfer() {
-    }
 }

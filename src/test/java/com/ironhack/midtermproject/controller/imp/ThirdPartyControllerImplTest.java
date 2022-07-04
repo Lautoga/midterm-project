@@ -13,6 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.web.servlet.MockMvc;
@@ -67,6 +68,8 @@ class ThirdPartyControllerImplTest {
 
     @Test
     void store() throws Exception {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("Authorization", "Basic dGVjaG5pY2lhbjoxMjM0NTY=");
         ThirdParty thirdParty = new ThirdParty(2L,"Fabi","5678");
         String body = objectMapper.writeValueAsString(thirdParty);
 
@@ -74,6 +77,7 @@ class ThirdPartyControllerImplTest {
                         post("/third-party")
                                 .content(body)
                                 .contentType(MediaType.APPLICATION_JSON)
+                                .headers(httpHeaders)
                 )
                 .andExpect(status().isCreated())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
